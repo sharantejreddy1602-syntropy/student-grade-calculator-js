@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grade Calculator – VIT</title>
+  <link rel="stylesheet" href="app.css" />
+  <style>
+    @font-face {
+      font-family: 'Virgil';
+      src: url('https://unpkg.com/@excalidraw/excalidraw/dist/prod/Virgil.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-logo">
+      <img src="Images/logo.webp" alt="VIT Logo" class="logo-img" />
+    </div>
+    <div class="header-title">
+      <h1 class="main-title">Grade Calculator</h1>
+      <p class="header-sub">Vellore Institute of Technology</p>
+    </div>
+    <div class="header-spacer"></div>
+  </header>
+
+  <main class="main-content">
+
+    <section class="hero-section">
+      <div class="quote-panel">
+        <div class="quote-decoration">✦</div>
+        <p class="quote-text">
+          "Every mark you've earned<br/>tells the story of your<br/>
+          <span class="quote-highlight">dedication &amp; brilliance.</span><br/>
+          Let's unveil your future grade —<br/>
+          <em>get started now!</em>"
+        </p>
+        <div class="quote-decoration bottom-deco">✦</div>
+      </div>
+
+      <div class="selector-panel">
+        <label class="field-label" for="subjectCount">How many subjects?</label>
+        <p class="selector-hint">Select the number of subjects to evaluate</p>
+        <select id="subjectCount" class="styled-select" onchange="generateSubjectRows()">
+          <option value="" disabled selected>— Select —</option>
+          <option value="1">1 Subject</option>
+          <option value="2">2 Subjects</option>
+          <option value="3">3 Subjects</option>
+          <option value="4">4 Subjects</option>
+          <option value="5">5 Subjects</option>
+          <option value="6">6 Subjects</option>
+          <option value="7">7 Subjects</option>
+          <option value="8">8 Subjects</option>
+          <option value="9">9 Subjects</option>
+          <option value="10">10 Subjects</option>
+        </select>
+      </div>
+    </section>
+
+    <section id="subjectSection" class="subject-section hidden">
+      <h2 class="section-heading">Enter Your Marks</h2>
+      <div id="subjectRows" class="subject-rows"></div>
+
+      <div class="btn-row">
+        <button
+          id="submitBtn"
+          class="btn btn-submit"
+          onclick="calculateGrade()"
+          onmouseover="btnHoverIn(this)"
+          onmouseout="btnHoverOut(this)">
+          ✦ Calculate Grade
+        </button>
+        <button
+          id="resetBtn"
+          class="btn btn-reset"
+          onclick="resetAll()">
+          ↺ Reset
+        </button>
+      </div>
+    </section>
+
+    <section id="metricsSection" class="metrics-section hidden">
+      <h2 class="section-heading metrics-heading">✦ Metrics</h2>
+
+      <div class="metrics-box">
+        <div class="metric-card">
+          <span class="metric-icon">📊</span>
+          <span class="metric-label">Total Marks</span>
+          <span id="totalMarks" class="metric-value">—</span>
+        </div>
+
+        <div class="metric-card">
+          <span class="metric-icon">📈</span>
+          <span class="metric-label">Average Marks</span>
+          <span id="avgMarks" class="metric-value">—</span>
+        </div>
+
+        <div class="metric-card grade-card">
+          <span class="metric-icon">🎓</span>
+          <span class="metric-label">
+            Grade
+            <span class="tooltip-wrap">
+              <span class="question-mark"
+                    onmouseover="showTooltip()"
+                    onmouseout="hideTooltip()">?</span>
+              <span id="gradeTooltip" class="tooltip-box">
+                <strong>Grading Criteria:</strong><br/>
+                🟢 Distinction: ≥ 75<br/>
+                🔵 First Class: 60 – 74<br/>
+                🟠 Pass: 50 – 59<br/>
+                🔴 Fail: &lt; 50
+              </span>
+            </span>
+          </span>
+          <span id="gradeDisplay" class="grade-badge">—</span>
+        </div>
+      </div>
+
+      <div id="motivationQuote" class="motivation-quote hidden"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Vellore Institute of Technology &nbsp;|&nbsp; Grade Calculator</p>
+  </footer>
+
+  <script src="theme1.js"></script>
+</body>
+</html>
